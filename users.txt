@@ -1,0 +1,23 @@
+User 1
+Username - Koala123
+Password - Koala123!
+
+User 2
+Username - Lonka123
+Password - Lonka123!
+
+User 3
+Username - Dhone123
+Password - Dhone123!
+
+User 4
+Username - Hasim123
+Password - Hasim123!
+
+User 5
+Username - Afing123
+Password - Afing123!
+
+User 6
+Username - Bintu123
+Password - Bintu123!

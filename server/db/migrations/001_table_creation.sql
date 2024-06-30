@@ -1,0 +1,33 @@
+CREATE TABLE Users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  is_deleted BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE Chatrooms (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  description TEXT,
+  created_by INTEGER REFERENCES Users(id),
+  type VARCHAR(255) CHECK (type IN ('GRP', '1TO1'))
+);
+
+CREATE TABLE Messages (
+  id SERIAL PRIMARY KEY,
+  chatroom_id INTEGER REFERENCES Chatrooms(id),
+  sender_id INTEGER REFERENCES Users(id),
+  message_text TEXT,
+  timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  is_deleted BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE ChatroomMembers (
+  id SERIAL PRIMARY KEY,
+  chatroom_id INTEGER REFERENCES Chatrooms(id),
+  user_id INTEGER REFERENCES Users(id),
+  joined_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  left_at TIMESTAMP WITH TIME ZONE
+);
+
